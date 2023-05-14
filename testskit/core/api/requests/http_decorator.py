@@ -18,15 +18,22 @@ COMMON_HEADERS = {
 }
 
 
-class HttpRequest:
+class HttpDecorator:
 
-    def __init__(self, url: str, method: RequestMethod = 'get'):
+    def __init__(
+            self,
+            url: str,
+            method: RequestMethod = 'get'
+    ):
         self.url = url
         self.method = method
         self.func_return = {}
         self.func_im_self = None
 
-    def __call__(self, func: Callable) -> Callable:
+    def __call__(
+            self,
+            func: Callable
+    ) -> Callable:
         self.func = func
         self.is_class = False
 
