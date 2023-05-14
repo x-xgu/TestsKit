@@ -7,8 +7,11 @@ class Option:
 
     @staticmethod
     def s_from(cls) -> List[Option]:
-        return [Option.from_(field) for field in cls.__dict__.values()
-                if Option.in_(field)]
+        return [
+            Option.from_(field)
+            for field in cls.__dict__.values()
+            if Option.in_(field)
+        ]
 
     @staticmethod
     def from_(prop) -> Option:
