@@ -1,4 +1,4 @@
-from testskit.common.web_assert import web_assert
+from selenite.common.web_assert import web_assert
 
 
 def test_web_assert_true(session_browser):

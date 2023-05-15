@@ -1,6 +1,6 @@
 import pytest
 
-from testskit.conf.pytest.options import Option
+from selenite.conf.pytest.options import Option
 
 
 class MyOption:

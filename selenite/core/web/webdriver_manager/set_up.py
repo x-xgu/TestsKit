@@ -11,8 +11,8 @@ from webdriver_manager.core.utils import ChromeType
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager, IEDriverManager
 
-from testskit.core.web.selenium.typing import WebDriverOptions
-from testskit.core.web.webdriver_manager import supported
+from selenite.core.web.selenium.typing import WebDriverOptions
+from selenite.core.web.webdriver_manager import supported
 
 installers: Dict[
     supported.BrowserName,

@@ -1,7 +1,7 @@
 import json
 import os
 
-from testskit.conf.settings.source import source, sourced
+from selenite.conf.settings.source import source, sourced
 
 
 def test_source_from_json():

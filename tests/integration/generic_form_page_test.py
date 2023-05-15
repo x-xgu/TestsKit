@@ -1,7 +1,7 @@
 from selene import browser, have
 from selene.support.shared.jquery_style import ss, s
 
-from testskit.core.web.generic_page.form_page import FormsPage
+from selenite.core.web.generic_page.form_page import FormsPage
 
 
 class Page(FormsPage):

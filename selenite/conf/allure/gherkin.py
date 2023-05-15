@@ -1,6 +1,6 @@
 from typing import Optional
 
-from testskit.conf.allure import report
+from selenite.conf.allure import report
 
 
 def _step(description: Optional[str] = None):

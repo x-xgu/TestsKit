@@ -2,7 +2,7 @@ from typing import Any
 
 from pyais import encode_dict
 
-from testskit.conf.protocol.socket import SocketConfig
+from selenite.conf.protocol.socket import SocketConfig
 
 
 class ShipAIS:

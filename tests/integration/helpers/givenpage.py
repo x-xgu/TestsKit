@@ -1,5 +1,5 @@
 from tests import resources
-from testskit import common
+from selenite import common
 
 EMPTY_PAGE_URL = resources.url('empty.html')
 

@@ -1,7 +1,7 @@
 from selene import browser
 
 from tests import resources
-from testskit.core.web.generic_page.edit_page import EditPage
+from selenite.core.web.generic_page.edit_page import EditPage
 
 EDIT_PAGE_URL = resources.url('orderapp/order.html')
 

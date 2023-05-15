@@ -12,13 +12,13 @@ def read_requirements(file_name):
 
 
 setup(
-    name="testskit",
+    name="selenite",
     version="0.1.0",
     author="xgu",
     author_email="g_xin@outlook.com",
     description="python + pytest + selene + allure automation test project",
     long_description=long_description,
-    packages=find_packages(exclude=["tests*"]),
+    packages=find_packages(exclude=["test*", "examples"]),
     install_requires=read_requirements("requirements.txt"),
     classifiers=[
         "Programming Language :: Python :: 3.10",

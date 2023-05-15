@@ -5,8 +5,8 @@ from typing import List, Union, Callable, Dict
 
 from selene import Collection, by, query, have, be, Element
 
-from testskit import common
-from testskit.common.web_assert import web_assert
+from selenite import common
+from selenite.common.web_assert import web_assert
 
 
 class Entity:

@@ -2,7 +2,7 @@ from typing import Optional, Any
 
 from selene import browser
 
-from testskit.common import predicate
+from selenite.common import predicate
 
 DEFAULT_MSG_TRUE = 'Condition should be true'
 DEFAULT_MSG_FALSE = 'Condition should be false'

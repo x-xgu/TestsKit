@@ -1,4 +1,4 @@
-from testskit.conf.allure import gherkin
+from selenite.conf.allure import gherkin
 
 
 def arrange(description: str):

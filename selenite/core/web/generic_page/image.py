@@ -8,7 +8,7 @@ from PIL import Image
 from selene import Element, query
 from skimage.metrics import structural_similarity as ssim
 
-from testskit import common
+from selenite import common
 
 TRANSLATE_CANVAS_TO_PNG = \
     'var canvas = self; ' \

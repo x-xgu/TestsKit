@@ -1,7 +1,7 @@
 from selenium import webdriver
 
-from testskit import common
-from testskit.conf.settings.project.selene import SeleneSettings
+from selenite import common
+from selenite.conf.settings.project.selene import SeleneSettings
 
 ARGS = [
     '--no-sandbox', '--disable-gpu', '--disable-notifications', '--disable-extensions', '--disable-dev-shm-usage',
