@@ -95,7 +95,7 @@ class FormsPage(FormPage):
     next_page_button: Element = None
     page_index_button: Collection = None
 
-    def with_page_turning(self, fn, *args, **kwargs):
+    def with_traverse_all_pages(self, fn, *args, **kwargs):
         while True:
             res = fn(*args, **kwargs)
             if not self.check_and_click_next_page_button():
@@ -114,14 +114,17 @@ class FormsPage(FormPage):
         return self
 
     def matching_elements_in_tables_by_row_keyword(self, row_keyword: Union[str, list]) -> Collection:
-        return self.with_page_turning(
-            lambda val: self.matching_elements_in_table_by_row_keyword(val),
-            row_keyword
-        )
+        while True:
+            elements = self.matching_elements_in_table_by_row_keyword(row_keyword)
+            if len(elements) > 0:
+                break
+            if not self.check_and_click_next_page_button():
+                break
+        return elements
 
     def get_table_all_info_with_dictionaries(self) -> List[Dict]:
         all_info = []
-        self.with_page_turning(
+        self.with_traverse_all_pages(
             lambda val: val.extend(self.table_text_list),
             all_info
         )
@@ -129,7 +132,7 @@ class FormsPage(FormPage):
 
     def get_table_all_info_with_lists(self) -> List[List]:
         all_info = []
-        self.with_page_turning(
+        self.with_traverse_all_pages(
             lambda val: val.extend(self.table_text_list),
             all_info
         )
