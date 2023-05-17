@@ -1,5 +1,5 @@
 from functools import reduce
-from typing import Protocol, Dict, Any, ContextManager, Iterable, Tuple
+from typing import Protocol, Dict, Any, ContextManager, Iterable, Tuple, Callable
 
 
 class _ContextManagerFactory(Protocol):
@@ -13,13 +13,28 @@ def log_with(
         *,
         context: _ContextManagerFactory,
         translations: Iterable[Tuple[str, str]] = (),
-):
-    def decorator_factory(wait):
-        def decorator(for_):
-            def decorated(fn):
+) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """
+    Decorator factory that logs function calls with a context manager.
+
+    Args:
+        context: A factory that returns a context manager.
+        translations: A list of tuples of strings to replace in the log title.
+
+    Returns:
+        A decorator that logs function calls with the given context manager.
+
+    Example:
+        >>> @log_with(context=MyContextManager)
+        ... def my_function():
+        ...     pass
+    """
+    def decorator_factory(wait: Any) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+        def decorator(for_: Any) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+            def decorated(fn: Callable[..., Any]) -> Callable[..., Any]:
                 title = f'{wait.entity}: {fn}'
 
-                def translate(initial: str, item: Tuple[str, str]):
+                def translate(initial: str, item: Tuple[str, str]) -> str:
                     old, new = item
                     return initial.replace(old, new)
 
