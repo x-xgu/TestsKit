@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 
-def zip_dict(keys: List[str], *values: List) -> List[Dict[str, List]]:
+def zip_dict(keys: List[str], *values: List) -> List[Dict[str, str]]:
     """
     Merge keys and values into a list of dictionaries
 
