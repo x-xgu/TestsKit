@@ -61,6 +61,12 @@ class Entity:
             >>> matching_elements_in_table_by_row_keyword('keyword')
             Collection([<Element>, <Element>, ...])
         """
+        elements = self.tbody
+        for keyword in ([row_keyword] if isinstance(row_keyword, str) else row_keyword):
+            elements = elements.by(have.text(keyword))
+            if len(elements) == 0:
+                break
+        return elements
 
     def matching_dictionaries_in_table_by_dictionary(self, dictionary: dict) -> list:
         """

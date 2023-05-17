@@ -46,7 +46,7 @@ class LocatorConfig:
             >>> locator.s_behind_label('Username')
             Collection object
         """
-        return self.locate_function(label_value, self.tag)
+        return ss(self.locate_function(label_value, self.tag))
 
     def __getattr__(self, tag: str) -> LocatorConfig:
         self.tag = tag
