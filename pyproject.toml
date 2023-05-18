@@ -22,6 +22,8 @@ ddddocr = "^1.4.7"
 csvmapper = "^0.7"
 scikit-image = "^0.20.0"
 pyais = "^2.5.2"
+sqlalchemy = "^2.0.13"
+psycopg2 = "^2.9.6"
 
 [build-system]
 requires = ["poetry-core"]

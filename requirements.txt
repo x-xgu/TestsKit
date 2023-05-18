@@ -10,6 +10,8 @@ PyYAML
 requests
 loguru
 ddddocr
-pyais==2.5.2
 csvmapper
 scikit-image
+pyais
+sqlalchemy
+psycopg2
