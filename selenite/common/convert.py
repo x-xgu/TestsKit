@@ -17,7 +17,7 @@ def zip_dict(keys: List[str], *values: List) -> List[Dict[str, str]]:
 
     Example:
         >>> zip_dict(['name', 'age'], ['John', 25], ['Jane', 30])
-        [{'name': ['John'], 'age': [25]}, {'name': ['Jane'], 'age': [30]}]
+        [{'name': 'John', 'age': 25}, {'name': 'Jane', 'age': 30}]
     """
     dict_list = []
     [dict_list.append(dict(zip(keys, value))) for value in values]
