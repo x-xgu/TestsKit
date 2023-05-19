@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List, Dict, Type
 
 import cv2
 import numpy as np
@@ -77,3 +77,42 @@ def convert_sec_to_ms(timeout: float) -> float:
         2500.0
     """
     return timeout * 1000
+
+
+def copy_without_attrs(
+        obj: object,
+        cls: Type,
+        *attrs: str
+) -> object:
+    """
+    Copy an object without certain attributes
+
+    Args:
+        obj (object): The object to copy
+        cls (Type): The class of the object
+        *attrs (str): The attributes to exclude from the copy
+
+    Returns:
+        object: The copied object without the excluded attributes
+
+    Example:
+        >>> class Person:
+        ...     def __init__(self, name: str = None, age: int = None):
+        ...         self.name = name
+        ...         self.age = age
+        ...
+        >>> person = Person('John', 25)
+        >>> person_copy = copy_without_attrs(person, Person, 'age')
+        >>> person_copy.name
+        'John'
+        >>> person_copy.age
+        None
+    """
+    return cls(
+        **{
+            k: v
+            for k, v
+            in vars(obj).items()
+            if k not in attrs
+        }
+    )
