@@ -1,4 +1,8 @@
+import warnings
+from typing import Callable
+
 from sqlalchemy import Engine
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import sessionmaker
 
 
@@ -44,3 +48,38 @@ class SQLHelper:
             None
         """
         self.session.rollback()
+
+    def with_safety_commit(self, fn: Callable, *args, **kwargs):
+        """
+        Commit changes with safety
+
+        Args:
+            fn (Callable): function to execute
+            *args: args for fn
+            **kwargs: kwargs for fn
+
+        Returns:
+            None
+
+        Examples:
+            >>> sql_helper = SQLHelper(engine)
+            >>> def fn():
+            >>>     sql_helper.session.query(
+            >>>         ORMClass
+            >>>     ).filter(
+            >>>         ORMClass.date == date
+            >>>     ).delete()
+            >>> sql_helper.with_safety_commit(
+            >>>     fn
+            >>> )
+
+        Raises:
+            SQLAlchemyError: if error occurs, rollback changes
+        """
+        try:
+            fn(*args, **kwargs)
+            self.commit()
+        except SQLAlchemyError as e:
+            self.rollback()
+            warnings.warn(f'Error occurs: {e}')
+            raise
